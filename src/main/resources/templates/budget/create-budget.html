@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="partials :: head"></head>
+<body>
+
+<nav th:replace="partials :: navbar"></nav>
+
+<h1>This is the Budget Create Page!</h1>
+<div class="" uk-grid="">
+        <ul class="uk-width-1-6@s uk-tab-left pl-m" style="z-index: 980;" uk-sticky="bottom: #offset" data-uk-tab="{connect:'#my-id'}">
+            <li><a href="">Tab 1</a></li>
+            <li><a href="">Tab 2</a></li>
+            <li><a href="">Tab 3</a></li>
+        </ul>
+        <ul id="my-id" class="uk-width-expand@s uk-switcher uk-margin">
+            <li><a href="#" id="autoplayer" data-uk-switcher-item="next"></a>
+                This slide contains a hidden link, that selects the next slide when clicked. The click is simulated by jacascript to mimic autoplay.
+            </li>
+            <li>Content 2</li>
+            <li>Content 3</li>
+        </ul>
+</div>
+
+
+<footer th:replace="partials :: footer"></footer>
+<span th:replace="partials :: scripts"></span>
+</body>
+</html>

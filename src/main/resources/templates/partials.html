@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:fragment="head">
+<head th:fragment="head(title)">
     <meta charset="UTF-8"/>
-    <title>Title</title>
+    <title th:text="${title}"></title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-rc.26/css/uikit.min.css" />
+    <link rel="stylesheet" href="/custom-uikit-expansion.css"/>
     <link rel="stylesheet" href="/spaces.css" />
 </head>
 <body>
@@ -18,6 +19,9 @@
         </div>
         <div class="uk-navbar-item">
             <div><a href="/login">Login</a></div>
+        </div>
+        <div class="uk-navbar-item">
+            <div><a href="/create-budget">Create Budget</a></div>
         </div>
     </div>
 </nav>

@@ -2,42 +2,39 @@ package com.matthewbudget.budget_calculator.models;
 
 public class Budget {
 
-    private int totalYearlyIncome;
-    private int totalYearlySavings;
-    private int totalYearlyExpenses;
+    private Income monthlyIncome;
+    private Savings monthlySavings;
+    private Expenses monthlyExpenses;
 
-    public Budget(int totalYearlyIncome, int totalYearlySavings, int totalYearlyExpenses){
-        this.totalYearlyIncome = totalYearlyIncome;
-        this.totalYearlySavings = totalYearlySavings;
-        this.totalYearlyExpenses = totalYearlyExpenses;
+    public Budget(){}
+
+    public Budget(Income income, Savings savings, Expenses expenses){
+        this.monthlyIncome = income;
+        this.monthlySavings = savings;
+        this.monthlyExpenses = expenses;
     }
 
-    public int getTotalYearlyIncome() {
-        return totalYearlyIncome;
+    public Income getMonthlyIncome() {
+        return monthlyIncome;
     }
 
-    public void setTotalYearlyIncome(int totalYearlyIncome) {
-        this.totalYearlyIncome = totalYearlyIncome;
+    public void setMonthlyIncome(Income monthlyIncome) {
+        this.monthlyIncome = monthlyIncome;
     }
 
-    public int getTotalYearlySavings() {
-        return totalYearlySavings;
+    public Savings getMonthlySavings() {
+        return monthlySavings;
     }
 
-    public void setTotalYearlySavings(int totalYearlySavings) {
-        this.totalYearlySavings = totalYearlySavings;
+    public void setMonthlySavings(Savings monthlySavings) {
+        this.monthlySavings = monthlySavings;
     }
 
-    public int getTotalYearlyExpenses() {
-        return totalYearlyExpenses;
+    public Expenses getMonthlyExpenses() {
+        return monthlyExpenses;
     }
 
-    public void setTotalYearlyExpenses(int totalYearlyExpenses) {
-        this.totalYearlyExpenses = totalYearlyExpenses;
+    public void setMonthlyExpenses(Expenses monthlyExpenses) {
+        this.monthlyExpenses = monthlyExpenses;
     }
-
-    //monthly savings
-    //monthly expenses
-    //annual expenses
-
 }

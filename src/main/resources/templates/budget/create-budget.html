@@ -1,24 +1,135 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="partials :: head"></head>
+<head th:replace="partials :: head('Create Budget')"></head>
 <body>
 
 <nav th:replace="partials :: navbar"></nav>
 
-<h1>This is the Budget Create Page!</h1>
-<div class="" uk-grid="">
-        <ul class="uk-width-1-6@s uk-tab-left pl-m" style="z-index: 980;" uk-sticky="bottom: #offset" data-uk-tab="{connect:'#my-id'}">
-            <li><a href="">Tab 1</a></li>
-            <li><a href="">Tab 2</a></li>
-            <li><a href="">Tab 3</a></li>
-        </ul>
-        <ul id="my-id" class="uk-width-expand@s uk-switcher uk-margin">
-            <li><a href="#" id="autoplayer" data-uk-switcher-item="next"></a>
-                This slide contains a hidden link, that selects the next slide when clicked. The click is simulated by jacascript to mimic autoplay.
+
+<div uk-grid="" class="mv-xxl ml-0 uk-flex-middle uk-text-center">
+    <ul class="uk-width-1-12@s uk-tab-left pl-xs" data-uk-tab="connect: #budget-form; animation: uk-animation-fade;">
+        <li class="mv-xl"><a href="">Income</a></li>
+        <li class="mv-xl"><a href="">Savings</a></li>
+        <li class="mv-xl"><a href="">Expenses</a></li>
+    </ul>
+    <form class="uk-width-expand@s uk-margin ml-m" action="" th:object="${budget}">
+        <ul id="budget-form" class=" uk-switcher ">
+            <li><a href="#" data-uk-switcher-item="next"></a>
+                <div class="uk-container">
+                    <div class="uk-margin">
+                        <div class="uk-inline w40">
+                            <span class="uk-form-icon" uk-icon="icon: mail"></span>
+                            <input class="uk-input" type="number" placeholder="Pay" maxlength="6" th:field="*{monthlyIncome.pay}"/>
+                        </div>
+                    </div>
+                    <div class="uk-margin">
+                        <div class="uk-inline w40">
+                            <span class="uk-form-icon" uk-icon="icon: lock"></span>
+                            <input class="uk-input" type="number" placeholder="Other" maxlength="6" th:field="*{monthlyIncome.other}"/>
+                        </div>
+                    </div>
+                </div>
             </li>
-            <li>Content 2</li>
-            <li>Content 3</li>
+            <li>
+                <div class="uk-container">
+                    <div class="uk-margin">
+                        <div class="uk-inline w40">
+                            <span class="uk-form-icon" uk-icon="icon: lock"></span>
+                            <input class="uk-input" type="number" placeholder="Emergency Fund" maxlength="6" th:field="*{monthlySavings.emergencyFund}"/>
+                        </div>
+                    </div>
+                    <div class="uk-margin">
+                        <div class="uk-inline w40">
+                            <span class="uk-form-icon" uk-icon="icon: lock"></span>
+                            <input class="uk-input" type="number" placeholder="Investments" maxlength="6" th:field="*{monthlySavings.investments}"/>
+                        </div>
+                    </div>
+                    <div class="uk-margin">
+                        <div class="uk-inline w40">
+                            <span class="uk-form-icon" uk-icon="icon: lock"></span>
+                            <input class="uk-input" type="number" placeholder="Retirement" maxlength="6" th:field="*{monthlySavings.retirement}"/>
+                        </div>
+                    </div>
+                    <div class="uk-margin">
+                        <div class="uk-inline w40">
+                            <span class="uk-form-icon" uk-icon="icon: lock"></span>
+                            <input class="uk-input" type="number" placeholder="Other" maxlength="6" th:field="*{monthlySavings.surplus}"/>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="uk-container">
+                    <div class="uk-margin">
+                        <div class="uk-inline w40">
+                            <span class="uk-form-icon" uk-icon="icon: lock"></span>
+                            <input class="uk-input" type="number" placeholder="Food" maxlength="6" th:field="*{monthlyExpenses.food}"/>
+                        </div>
+                    </div>
+                    <div class="uk-margin">
+                        <div class="uk-inline w40">
+                            <span class="uk-form-icon" uk-icon="icon: lock"></span>
+                            <input class="uk-input" type="number" placeholder="Clothing" maxlength="6" th:field="*{monthlyExpenses.clothing}"/>
+                        </div>
+                    </div>
+                    <div class="uk-margin">
+                        <div class="uk-inline w40">
+                            <span class="uk-form-icon" uk-icon="icon: lock"></span>
+                            <input class="uk-input" type="number" placeholder="Shelter" maxlength="6" th:field="*{monthlyExpenses.shelter}"/>
+                        </div>
+                    </div>
+                    <div class="uk-margin">
+                        <div class="uk-inline w40">
+                            <span class="uk-form-icon" uk-icon="icon: lock"></span>
+                            <input class="uk-input" type="number" placeholder="Household" maxlength="6" th:field="*{monthlyExpenses.household}"/>
+                        </div>
+                    </div>
+                    <div class="uk-margin">
+                        <div class="uk-inline w40">
+                            <span class="uk-form-icon" uk-icon="icon: lock"></span>
+                            <input class="uk-input" type="number" placeholder="Transportation" maxlength="6" th:field="*{monthlyExpenses.transportation}"/>
+                        </div>
+                    </div>
+                    <div class="uk-margin">
+                        <div class="uk-inline w40">
+                            <span class="uk-form-icon" uk-icon="icon: lock"></span>
+                            <input class="uk-input" type="number" placeholder="Health" maxlength="6" th:field="*{monthlyExpenses.health}"/>
+                        </div>
+                    </div>
+                    <div class="uk-margin">
+                        <div class="uk-inline w40">
+                            <span class="uk-form-icon" uk-icon="icon: lock"></span>
+                            <input class="uk-input" type="number" placeholder="Student Loans" maxlength="6" th:field="*{monthlyExpenses.studentLoans}"/>
+                        </div>
+                    </div>
+                    <div class="uk-margin">
+                        <div class="uk-inline w40">
+                            <span class="uk-form-icon" uk-icon="icon: lock"></span>
+                            <input class="uk-input" type="number" placeholder="Personal" maxlength="6" th:field="*{monthlyExpenses.personal}"/>
+                        </div>
+                    </div>
+                    <div class="uk-margin">
+                        <div class="uk-inline w40">
+                            <span class="uk-form-icon" uk-icon="icon: lock"></span>
+                            <input class="uk-input" type="number" placeholder="Car Insurance" maxlength="6" th:field="*{monthlyExpenses.carInsurance}"/>
+                        </div>
+                    </div>
+                    <div class="uk-margin">
+                        <div class="uk-inline w40">
+                            <span class="uk-form-icon" uk-icon="icon: lock"></span>
+                            <input class="uk-input" type="number" placeholder="House Insurance" maxlength="6" th:field="*{monthlyExpenses.houseInsurance}"/>
+                        </div>
+                    </div>
+                    <div class="uk-margin">
+                        <div class="uk-inline w40">
+                            <span class="uk-form-icon" uk-icon="icon: lock"></span>
+                            <input class="uk-input" type="number" placeholder="Other" maxlength="6" th:field="*{monthlyExpenses.other}"/>
+                        </div>
+                    </div>
+                </div>
+            </li>
         </ul>
+    </form>
 </div>
 
 

@@ -1,25 +1,41 @@
 package com.matthewbudget.budget_calculator.models;
 
+import javax.persistence.*;
+
+@Entity
 public class Expenses {
 
+    @OneToOne
+    private Budget budget;
+
+    @Column()
     private int food;
+    @Column()
     private int clothing;
-    private int shelter;
+    @Column()
     private int household;
+    @Column()
     private int transportation;
+    @Column()
     private int health;
+    @Column()
     private int studentLoans;
+    @Column()
     private int personal;
+    @Column()
     private int carInsurance;
+    @Column()
     private int houseInsurance;
+    @Column()
     private int other;
+    @Id @GeneratedValue
+    private long id;
 
     public Expenses(){}
 
-    public Expenses(int food, int clothing, int shelter, int household, int transportation, int health, int studentLoans, int personal, int carInsurance, int houseInsurance, int other) {
+    public Expenses(int food, int clothing, int household, int transportation, int health, int studentLoans, int personal, int carInsurance, int houseInsurance, int other, long id) {
         this.food = food;
         this.clothing = clothing;
-        this.shelter = shelter;
         this.household = household;
         this.transportation = transportation;
         this.health = health;
@@ -28,6 +44,7 @@ public class Expenses {
         this.carInsurance = carInsurance;
         this.houseInsurance = houseInsurance;
         this.other = other;
+        this.id = id;
     }
 
     public int getFood() {
@@ -44,14 +61,6 @@ public class Expenses {
 
     public void setClothing(int clothing) {
         this.clothing = clothing;
-    }
-
-    public int getShelter() {
-        return shelter;
-    }
-
-    public void setShelter(int shelter) {
-        this.shelter = shelter;
     }
 
     public int getHousehold() {

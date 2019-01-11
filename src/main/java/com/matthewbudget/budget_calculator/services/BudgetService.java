@@ -1,35 +1,30 @@
 package com.matthewbudget.budget_calculator.services;
 
 import com.matthewbudget.budget_calculator.models.Budget;
+import com.matthewbudget.budget_calculator.repositories.BudgetRepository;
 import org.springframework.stereotype.Service;
 
 @Service
 public class BudgetService {
 
-    private Budget budget;
+    private final BudgetRepository budgetDao;
 
-
-    public BudgetService() {
-        budget = new Budget();
-        createBudget();
+    public BudgetService(BudgetRepository budgetDao) {
+        this.budgetDao = budgetDao;
     }
 
     public Budget myBudget(long userId) {
-        return budget;
+        return budgetDao.findOne(userId);
     }
 
-    public Budget create(Budget budget) {
-
-        return budget;
+    public long save(Budget budget) {
+        budgetDao.save(budget);
+        return budget.getId();
     }
 
-    public Budget edit(Budget budget){
-
-        return budget;
+    public void delete(long id){
+        budgetDao.delete(id);
     }
 
-    private void createBudget() {
-
-    }
 
 }

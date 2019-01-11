@@ -1,19 +1,32 @@
 package com.matthewbudget.budget_calculator.models;
 
+import javax.persistence.*;
+
+@Entity
 public class Savings {
 
+    @OneToOne
+    private Budget budget;
+
+    @Column()
     private int emergencyFund;
+    @Column()
     private int investments;
+    @Column()
     private int retirement;
+    @Column()
     private int surplus;
+    @Id @GeneratedValue
+    private long id;
 
     public Savings(){}
 
-    public Savings(int emergencyFund, int investments, int retirement, int surplus) {
+    public Savings(int emergencyFund, int investments, int retirement, int surplus, long id) {
         this.emergencyFund = emergencyFund;
         this.investments = investments;
         this.retirement = retirement;
         this.surplus = surplus;
+        this.id = id;
     }
 
     public int getEmergencyFund() {

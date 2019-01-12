@@ -6,6 +6,8 @@ import javax.persistence.*;
 public class Budget {
 
     @OneToOne
+    private User owner;
+    @OneToOne
     private Income monthlyIncome;
     @OneToOne
     private Savings monthlySavings;

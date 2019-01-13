@@ -17,18 +17,21 @@
         <div class="uk-navbar-item">
             <div><a href="/">Home</a></div>
         </div>
-        <div sec:authorize="!isAuthenticated()">
+        <div class="uk-navbar-item p-0" sec:authorize="!isAuthenticated()">
             <div class="uk-navbar-item">
                 <div><a href="/login">Login</a></div>
             </div>
+            <div class="uk-navbar-item">
+                <div><a href="/sign-up">Register</a></div>
+            </div>
         </div>
-        <div sec:authorize="isAuthenticated()">
+        <div class="uk-navbar-item p-0" sec:authorize="isAuthenticated()">
             <div class="uk-navbar-item">
                 <div><a href="/budget/create">Create Budget</a></div>
             </div>
             <div class="uk-navbar-item">
-                <form th:action="@{/logout}" th:method="post">
-                    <button class="btn">Logout</button>
+                <form th:action="@{/logout}" th:method="post" id="logout">
+                    <a onclick="document.getElementById('logout').submit();">Logout</a>
                 </form>
             </div>
         </div>

@@ -1,22 +1,27 @@
 package com.matthewbudget.budget_calculator.models;
 
+
 import javax.persistence.*;
 
 @Entity
 public class Budget {
 
-    @OneToOne
+    @OneToOne(cascade = {CascadeType.ALL})
     private User owner;
-    @OneToOne
+    @OneToOne(cascade = {CascadeType.ALL})
     private Income monthlyIncome;
-    @OneToOne
+    @OneToOne(cascade = {CascadeType.ALL})
     private Savings monthlySavings;
-    @OneToOne
+    @OneToOne(cascade = {CascadeType.ALL})
     private Expenses monthlyExpenses;
     @Id @GeneratedValue
     private long id;
 
     public Budget(){}
+
+//    public Budget(long id){
+//        this.id = id;
+//    }
 
     public Budget(Income income, Savings savings, Expenses expenses, long id){
         this.monthlyIncome = income;

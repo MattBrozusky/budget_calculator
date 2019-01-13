@@ -29,7 +29,7 @@ public class BudgetController {
     @PostMapping("/budget/create")
     public String submitBudget(@ModelAttribute Budget budget){
         budgetService.save(budget);
-        return "";
+        return "redirect:/";
     }
 
     //View Your Budget

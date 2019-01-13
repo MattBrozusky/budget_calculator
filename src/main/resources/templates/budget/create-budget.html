@@ -12,7 +12,7 @@
         <li class="mv-xl"><a href="">Savings</a></li>
         <li class="mv-xl"><a href="">Expenses</a></li>
     </ul>
-    <form class="uk-width-7-12@s uk-margin ml-m uk-position-center" action="/budget/create" th:object="${budget}">
+    <form class="uk-width-7-12@s uk-margin ml-m uk-position-center" th:action="@{/budget/create}" th:object="${budget}" method="POST">
         <ul id="budget-form" class=" uk-switcher ">
             <li><a href="#" data-uk-switcher-item="next"></a>
                 <div class="uk-container">

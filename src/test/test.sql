@@ -1,3 +1,5 @@
 USE budget_app_db;
 
-select * from expenses;
+DROP DATABASE budget_app_db;
+
+SELECT * FROM expenses;

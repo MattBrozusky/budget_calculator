@@ -5,7 +5,7 @@ import javax.persistence.*;
 @Entity
 public class Expenses {
 
-    @OneToOne
+    @OneToOne(cascade = {CascadeType.ALL})
     private Budget budget;
 
     @Column()
@@ -125,5 +125,13 @@ public class Expenses {
 
     public void setOther(int other) {
         this.other = other;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 }

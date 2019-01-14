@@ -32,7 +32,6 @@ public class BudgetController {
     @PostMapping("/budget/create")
     public String submitBudget(@ModelAttribute Budget budget){
         User owner = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        owner.setBudget(budget);
         budget.setOwner(owner);
         budget.getMonthlyExpenses().setBudget(budget);
         budget.getMonthlyIncome().setBudget(budget);

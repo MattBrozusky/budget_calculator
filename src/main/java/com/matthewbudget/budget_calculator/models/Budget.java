@@ -6,7 +6,7 @@ import javax.persistence.*;
 @Entity
 public class Budget {
 
-    @OneToOne @JoinColumn(name = "user_id")
+    @OneToOne
     private User owner;
     @OneToOne(cascade = {CascadeType.ALL}, mappedBy = "budget")
     private Income monthlyIncome;
@@ -18,10 +18,6 @@ public class Budget {
     private long id;
 
     public Budget(){}
-
-//    public Budget(long id){
-//        this.id = id;
-//    }
 
     public Budget(Income income, Savings savings, Expenses expenses, long id){
         this.monthlyIncome = income;

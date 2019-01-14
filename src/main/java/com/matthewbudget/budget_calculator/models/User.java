@@ -6,8 +6,6 @@ import javax.persistence.*;
 @Table(name = "users")
 public class User {
 
-    @OneToOne(cascade = {CascadeType.ALL}, mappedBy = "user")
-    private Budget budget;
 
     @Column(nullable = false, unique = true)
     private String username;
@@ -26,7 +24,6 @@ public class User {
         this.username = copy.username;
         this.email = copy.email;
         this.password = copy.password;
-        this.budget = copy.budget;
     }
 
     public String getUsername() {
@@ -61,11 +58,4 @@ public class User {
         this.id = id;
     }
 
-    public Budget getBudget() {
-        return budget;
-    }
-
-    public void setBudget(Budget budget) {
-        this.budget = budget;
-    }
 }

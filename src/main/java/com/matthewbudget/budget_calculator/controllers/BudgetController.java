@@ -1,7 +1,10 @@
 package com.matthewbudget.budget_calculator.controllers;
 
 import com.matthewbudget.budget_calculator.models.Budget;
+import com.matthewbudget.budget_calculator.models.Expenses;
+import com.matthewbudget.budget_calculator.models.User;
 import com.matthewbudget.budget_calculator.services.BudgetService;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,6 +31,12 @@ public class BudgetController {
     //Submit Your Budget
     @PostMapping("/budget/create")
     public String submitBudget(@ModelAttribute Budget budget){
+        User owner = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        owner.setBudget(budget);
+        budget.setOwner(owner);
+        budget.getMonthlyExpenses().setBudget(budget);
+        budget.getMonthlyIncome().setBudget(budget);
+        budget.getMonthlySavings().setBudget(budget);
         budgetService.save(budget);
         return "redirect:/";
     }
@@ -38,6 +47,5 @@ public class BudgetController {
         model.addAttribute("budget", budgetService.myBudget(userId));
         return "budget/view";
     }
-
 
 }

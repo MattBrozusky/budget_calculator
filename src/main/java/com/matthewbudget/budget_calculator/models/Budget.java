@@ -6,13 +6,13 @@ import javax.persistence.*;
 @Entity
 public class Budget {
 
-    @OneToOne(cascade = {CascadeType.ALL})
+    @OneToOne @JoinColumn(name = "user_id")
     private User owner;
-    @OneToOne(cascade = {CascadeType.ALL})
+    @OneToOne(cascade = {CascadeType.ALL}, mappedBy = "budget")
     private Income monthlyIncome;
-    @OneToOne(cascade = {CascadeType.ALL})
+    @OneToOne(cascade = {CascadeType.ALL}, mappedBy = "budget")
     private Savings monthlySavings;
-    @OneToOne(cascade = {CascadeType.ALL})
+    @OneToOne(cascade = {CascadeType.ALL}, mappedBy = "budget")
     private Expenses monthlyExpenses;
     @Id @GeneratedValue
     private long id;
@@ -56,5 +56,13 @@ public class Budget {
 
     public long getId() {
         return id;
+    }
+
+    public User getOwner() {
+        return owner;
+    }
+
+    public void setOwner(User owner) {
+        this.owner = owner;
     }
 }

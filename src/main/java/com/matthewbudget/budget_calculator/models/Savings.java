@@ -5,7 +5,7 @@ import javax.persistence.*;
 @Entity
 public class Savings {
 
-    @OneToOne(cascade = {CascadeType.ALL})
+    @OneToOne @JoinColumn (name = "budget_id")
     private Budget budget;
 
     @Column()
@@ -59,5 +59,13 @@ public class Savings {
 
     public void setSurplus(int surplus) {
         this.surplus = surplus;
+    }
+
+    public Budget getBudget() {
+        return budget;
+    }
+
+    public void setBudget(Budget budget) {
+        this.budget = budget;
     }
 }

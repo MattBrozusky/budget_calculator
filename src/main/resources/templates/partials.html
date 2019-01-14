@@ -6,32 +6,33 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-rc.26/css/uikit.min.css" />
     <link rel="stylesheet" href="/custom-uikit-expansion.css"/>
     <link rel="stylesheet" href="/spaces.css" />
+    <link rel="stylesheet" href="/budget.css"/>
 </head>
 <body>
 
-<nav th:fragment="navbar" class="uk-navbar-container uk-margin" uk-navbar="">
+<nav th:fragment="navbar" class="uk-light main-bg uk-navbar-container uk-margin" uk-navbar="">
     <div class="uk-navbar-left">
         <a class="uk-navbar-item uk-logo" href="#">Matt's Budget Calculator</a>
     </div>
     <div class="uk-navbar-right">
         <div class="uk-navbar-item">
-            <div><a href="/">Home</a></div>
+            <div><a href="/"><span uk-icon="home" class="mr-xxxs"></span>Home</a></div>
         </div>
         <div class="uk-navbar-item p-0" sec:authorize="!isAuthenticated()">
             <div class="uk-navbar-item">
-                <div><a href="/login">Login</a></div>
+                <div><a href="/login"><span uk-icon="sign-in" class="mr-xxxs"></span>Login</a></div>
             </div>
             <div class="uk-navbar-item">
-                <div><a href="/sign-up">Register</a></div>
+                <div><a href="/sign-up"><span uk-icon="pencil" class="mr-xxxs"></span>Register</a></div>
             </div>
         </div>
         <div class="uk-navbar-item p-0" sec:authorize="isAuthenticated()">
             <div class="uk-navbar-item">
-                <div><a href="/budget/create">Create Budget</a></div>
+                <div><a href="/budget/create"><span uk-icon="list" class="mr-xxxs"></span>Budget</a></div>
             </div>
             <div class="uk-navbar-item">
                 <form th:action="@{/logout}" th:method="post" id="logout">
-                    <a onclick="document.getElementById('logout').submit();">Logout</a>
+                    <a onclick="document.getElementById('logout').submit();"><span uk-icon="sign-out" class="mr-xxxs"></span>Logout</a>
                 </form>
             </div>
         </div>

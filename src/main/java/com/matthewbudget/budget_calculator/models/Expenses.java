@@ -134,4 +134,21 @@ public class Expenses {
     public void setBudget(Budget budget) {
         this.budget = budget;
     }
+
+
+
+    //Math
+    public long total(){
+        return this.studentLoans +
+                this.personal+
+                this.other +
+                this.carInsurance +
+                this.health +
+                this.houseInsurance +
+                this.food +
+                this.clothing +
+                this.transportation +
+                this.household;
+    }
+
 }

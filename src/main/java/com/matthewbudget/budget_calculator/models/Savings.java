@@ -68,4 +68,11 @@ public class Savings {
     public void setBudget(Budget budget) {
         this.budget = budget;
     }
+
+    public long total(){
+        return this.emergencyFund +
+                this.investments+
+                this.retirement +
+                this.surplus;
+    }
 }

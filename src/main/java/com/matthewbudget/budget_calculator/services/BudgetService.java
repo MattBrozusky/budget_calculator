@@ -1,6 +1,7 @@
 package com.matthewbudget.budget_calculator.services;
 
 import com.matthewbudget.budget_calculator.models.Budget;
+import com.matthewbudget.budget_calculator.models.User;
 import com.matthewbudget.budget_calculator.repositories.BudgetRepository;
 import org.springframework.stereotype.Service;
 
@@ -13,8 +14,8 @@ public class BudgetService {
         this.budgetDao = budgetDao;
     }
 
-    public Budget myBudget(long userId) {
-        return budgetDao.findOne(userId);
+    public Budget myBudget(User user) {
+        return budgetDao.findBudgetByOwnerEquals(user);
     }
 
     public long save(Budget budget) {

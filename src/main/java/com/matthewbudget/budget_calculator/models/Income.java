@@ -46,4 +46,9 @@ public class Income {
     public void setBudget(Budget budget) {
         this.budget = budget;
     }
+
+    public long total(){
+        return this.pay +
+                this.other;
+    }
 }

@@ -2,4 +2,4 @@ USE budget_app_db;
 
 DROP DATABASE budget_app_db;
 
-SELECT * FROM budget;
+SELECT * FROM users;

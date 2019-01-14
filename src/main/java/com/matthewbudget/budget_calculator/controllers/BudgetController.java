@@ -1,7 +1,6 @@
 package com.matthewbudget.budget_calculator.controllers;
 
 import com.matthewbudget.budget_calculator.models.Budget;
-import com.matthewbudget.budget_calculator.models.Expenses;
 import com.matthewbudget.budget_calculator.models.User;
 import com.matthewbudget.budget_calculator.services.BudgetService;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -9,7 +8,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
@@ -24,6 +22,11 @@ public class BudgetController {
     //Create A Budget Form
     @GetMapping("/budget/create")
     public String createBudget(Model model){
+        Budget userBudget = budgetService.myBudget((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+        if (userBudget != null){
+            return "redirect:/budget/view";
+        }
+
         model.addAttribute("budget", new Budget());
         return "budget/create-budget";
     }
@@ -41,9 +44,10 @@ public class BudgetController {
     }
 
     //View Your Budget
-    @GetMapping("/budget/view/{userId}")
-    public String viewBudget(@PathVariable long userId, Model model){
-        model.addAttribute("budget", budgetService.myBudget(userId));
+    @GetMapping("/budget/view")
+    public String viewBudget(Model model){
+        User owner = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        model.addAttribute("budget", budgetService.myBudget(owner));
         return "budget/view";
     }
 

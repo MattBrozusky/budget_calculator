@@ -18,6 +18,9 @@
         <div class="uk-navbar-item">
             <div><a href="/"><span uk-icon="home" class="mr-xxxs"></span>Home</a></div>
         </div>
+        <div class="uk-navbar-item">
+            <div><a href="/posts"><span uk-icon="comments" class="mr-xxxs"></span>Posts</a></div>
+        </div>
         <div class="uk-navbar-item p-0" sec:authorize="!isAuthenticated()">
             <div class="uk-navbar-item">
                 <div><a href="/login"><span uk-icon="sign-in" class="mr-xxxs"></span>Login</a></div>
@@ -27,6 +30,9 @@
             </div>
         </div>
         <div class="uk-navbar-item p-0" sec:authorize="isAuthenticated()">
+            <div class="uk-navbar-item">
+                <div><a href="/posts/create"><span uk-icon="commenting" class="mr-xxxs"></span>Create Post</a></div>
+            </div>
             <div class="uk-navbar-item">
                 <div><a href="/budget/create"><span uk-icon="list" class="mr-xxxs"></span>Budget</a></div>
             </div>

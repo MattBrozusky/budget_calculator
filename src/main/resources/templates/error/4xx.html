@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title th:text="'Ooops, ' + ${error}"></title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-rc.26/css/uikit.min.css" />
+    <link rel="stylesheet" href="/css/custom-uikit-expansion.css"/>
+    <link rel="stylesheet" href="/css/spaces.css" />
+    <link rel="stylesheet" href="/css/budget.css"/>
+</head>
+<body>
+<nav th:replace="partials :: navbar"></nav>
+<th:block th:switch="${error}">
+    <section class="uk-text-center">
+        <div th:case="'Not Found'">
+            <h1>Page not found!!</h1>
+        </div>
+        <div th:case="'Forbidden'">
+            <h1>You don't have permission to view this page.</h1>
+        </div>
+        <div th:case="'Bad Request'">
+            <h1>No page exists!</h1>
+        </div>
+    </section>
+</th:block>
+<span th:replace="partials :: scripts"></span>
+</body>
+</html>

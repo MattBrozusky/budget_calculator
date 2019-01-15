@@ -26,9 +26,9 @@ public class BudgetController {
         if (userBudget != null){
             return "redirect:/budget/view";
         }
-
+        model.addAttribute("createOrEdit", "create");
         model.addAttribute("budget", new Budget());
-        return "budget/create-budget";
+        return "budget/create-edit-budget";
     }
 
     //Submit Your Budget
@@ -40,7 +40,34 @@ public class BudgetController {
         budget.getMonthlyIncome().setBudget(budget);
         budget.getMonthlySavings().setBudget(budget);
         budgetService.save(budget);
-        return "redirect:/";
+        return "redirect:/budget/view";
+    }
+
+    //Edit Your Budget
+    @GetMapping("/budget/edit")
+    public String editBudget(Model model){
+        Budget userBudget = budgetService.myBudget((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+        if (userBudget == null){
+            return "redirect:/budget/create";
+        }
+        model.addAttribute("createOrEdit", "edit");
+        model.addAttribute("budget", userBudget);
+        return "budget/create-edit-budget";
+    }
+
+    //Submit Budget Edit
+    @PostMapping("/budget/edit")
+    public String editBudgetSubmit(@ModelAttribute Budget userBudget){
+        User owner = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Budget deleteBudget = budgetService.myBudget(owner);
+        budgetService.delete(deleteBudget.getId());
+
+        userBudget.setOwner(owner);
+        userBudget.getMonthlyExpenses().setBudget(userBudget);
+        userBudget.getMonthlyIncome().setBudget(userBudget);
+        userBudget.getMonthlySavings().setBudget(userBudget);
+        budgetService.save(userBudget);
+        return "redirect:/budget/view";
     }
 
     //View Your Budget

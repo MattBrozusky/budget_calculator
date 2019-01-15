@@ -23,6 +23,10 @@ public class BudgetService {
         return budget.getId();
     }
 
+    public void edit(Budget budget){
+
+    }
+
     public void delete(long id){
         budgetDao.delete(id);
     }

@@ -6,7 +6,6 @@ import javax.persistence.*;
 @Table(name = "users")
 public class User {
 
-
     @Column(nullable = false, unique = true)
     private String username;
     @Column(nullable = false, unique = true)

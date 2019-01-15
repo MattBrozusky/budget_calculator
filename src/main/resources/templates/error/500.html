@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title th:text="'Ooops, ' + ${error}"></title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-rc.26/css/uikit.min.css" />
+    <link rel="stylesheet" href="/css/custom-uikit-expansion.css"/>
+    <link rel="stylesheet" href="/css/spaces.css" />
+    <link rel="stylesheet" href="/css/budget.css"/>
+</head>
+<body>
+<nav th:replace="partials :: navbar"></nav>
+    <div th:text="${error}"></div>
+<span th:replace="partials :: scripts"></span>
+</body>
+</html>

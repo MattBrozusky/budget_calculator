@@ -13,10 +13,10 @@
         <li class="mv-xl"><a href="">Savings</a></li>
         <li class="mv-xl"><a href="">Expenses</a></li>
     </ul>
-    <form class="uk-width-7-12@s uk-margin ml-m uk-position-center" th:action="@{/budget/create}" th:object="${budget}" method="POST">
+    <form class="uk-width-7-12@s uk-margin ml-m uk-position-center" th:action="@{/budget/{type}(type=${createOrEdit})}" th:object="${budget}" method="POST">
         <ul id="budget-form" class=" uk-switcher ">
             <li><a href="#" data-uk-switcher-item="next"></a>
-                <div class="uk-container">
+                <div class="uk-container mt-xs">
                     <div class="uk-margin" uk-grid="">
                         <label class="uk-leader uk-width-1-4@s pl-0 mt-xxs" for="pay">Pay:</label>
                         <div class="uk-inline w40 uk-width-3-4@s pl-xs">
@@ -137,8 +137,13 @@
                             <input id="other-expenses" class="spend uk-input" type="number" placeholder="Other" maxlength="6" th:field="*{monthlyExpenses.other}"/>
                         </div>
                     </div>
-                    <div class="uk-text-center uk-margin">
-                        <button class="uk-button uk-button-primary" type="submit">Create</button>
+                    <div th:switch="${createOrEdit}">
+                        <div th:case="'create'" class="uk-text-center uk-margin">
+                            <button class="uk-button uk-button-primary" type="submit">Create</button>
+                        </div>
+                        <div th:case="'edit'" class="uk-text-center uk-margin">
+                            <button class="uk-button uk-button-primary" type="submit">Edit</button>
+                        </div>
                     </div>
                 </div>
             </li>

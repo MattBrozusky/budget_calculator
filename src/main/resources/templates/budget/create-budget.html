@@ -6,7 +6,8 @@
 <nav th:replace="partials :: navbar"></nav>
 
 
-<div uk-grid="" class="mv-xxl ml-0 uk-flex-middle">
+<div uk-grid="" class="mv-xxl ml-0 uk-flex-middle uk-overflow-hidden">
+    <div class="counter">Total: $<span id="total"></span></div>
     <ul class="uk-width-1-12@s uk-tab-left pl-xs" data-uk-tab="connect: #budget-form; animation: uk-animation-fade;">
         <li class="mv-xl"><a href="">Income</a></li>
         <li class="mv-xl"><a href="">Savings</a></li>
@@ -38,28 +39,28 @@
                         <label class="uk-leader uk-width-1-4@s pl-0 mt-xxs" for="emergency-fund">Emergency Fund:</label>
                         <div class="uk-inline w40 uk-width-3-4@s pl-xs">
                             <span class="uk-position-center-left">$</span>
-                            <input id="emergency-fund" class="uk-input" type="number" placeholder="Emergency Fund" maxlength="6" th:field="*{monthlySavings.emergencyFund}"/>
+                            <input id="emergency-fund" class="spend uk-input" type="number" placeholder="Emergency Fund" maxlength="6" th:field="*{monthlySavings.emergencyFund}"/>
                         </div>
                     </div>
                     <div class="uk-margin" uk-grid="">
                         <label class="uk-leader uk-width-1-4@s pl-0 mt-xxs" for="investments">Investments:</label>
                         <div class="uk-inline w40 uk-width-3-4@s pl-xs">
                             <span class="uk-position-center-left">$</span>
-                            <input id="investments" class="uk-input" type="number" placeholder="Investments" maxlength="6" th:field="*{monthlySavings.investments}"/>
+                            <input id="investments" class="spend uk-input" type="number" placeholder="Investments" maxlength="6" th:field="*{monthlySavings.investments}"/>
                         </div>
                     </div>
                     <div class="uk-margin" uk-grid="">
                         <label class="uk-leader uk-width-1-4@s pl-0 mt-xxs" for="retirement">Retirement:</label>
                         <div class="uk-inline w40 uk-width-3-4@s pl-xs">
                             <span class="uk-position-center-left">$</span>
-                            <input id="retirement" class="uk-input" type="number" placeholder="Retirement" maxlength="6" th:field="*{monthlySavings.retirement}"/>
+                            <input id="retirement" class="spend uk-input" type="number" placeholder="Retirement" maxlength="6" th:field="*{monthlySavings.retirement}"/>
                         </div>
                     </div>
                     <div class="uk-margin" uk-grid="">
                         <label class="uk-leader uk-width-1-4@s pl-0 mt-xxs" for="other-savings">Other:</label>
                         <div class="uk-inline w40 uk-width-3-4@s pl-xs">
                             <span class="uk-position-center-left">$</span>
-                            <input id="other-savings" class="uk-input" type="number" placeholder="Other" maxlength="6" th:field="*{monthlySavings.surplus}"/>
+                            <input id="other-savings" class="spend uk-input" type="number" placeholder="Other" maxlength="6" th:field="*{monthlySavings.surplus}"/>
                         </div>
                     </div>
                 </div>
@@ -70,74 +71,74 @@
                         <label class="uk-leader uk-width-1-4@s pl-0 mt-xxs" for="food">Food:</label>
                         <div class="uk-inline w40 uk-width-3-4@s pl-xs">
                             <span class="uk-position-center-left">$</span>
-                            <input id="food" class="uk-input" type="number" placeholder="Food" maxlength="6" th:field="*{monthlyExpenses.food}"/>
+                            <input id="food" class="spend uk-input" type="number" placeholder="Food" maxlength="6" th:field="*{monthlyExpenses.food}"/>
                         </div>
                     </div>
                     <div class="uk-margin" uk-grid="">
                         <label class="uk-leader uk-width-1-4@s pl-0 mt-xxs" for="clothing">Clothing:</label>
                         <div class="uk-inline w40 uk-width-3-4@s pl-xs">
                             <span class="uk-position-center-left">$</span>
-                            <input id="clothing" class="uk-input" type="number" placeholder="Clothing" maxlength="6" th:field="*{monthlyExpenses.clothing}"/>
+                            <input id="clothing" class="spend uk-input" type="number" placeholder="Clothing" maxlength="6" th:field="*{monthlyExpenses.clothing}"/>
                         </div>
                     </div>
                     <div class="uk-margin" uk-grid="">
                         <label class="uk-leader uk-width-1-4@s pl-0 mt-xxs" for="household">Household:</label>
                         <div class="uk-inline w40 uk-width-3-4@s pl-xs">
                             <span class="uk-position-center-left">$</span>
-                            <input id="household" class="uk-input" type="number" placeholder="Household" maxlength="6" th:field="*{monthlyExpenses.household}"/>
+                            <input id="household" class="spend uk-input" type="number" placeholder="Household" maxlength="6" th:field="*{monthlyExpenses.household}"/>
                         </div>
                     </div>
                     <div class="uk-margin" uk-grid="">
                         <label class="uk-leader uk-width-1-4@s pl-0 mt-xxs" for="transportation">Transportation:</label>
                         <div class="uk-inline w40 uk-width-3-4@s pl-xs">
                             <span class="uk-position-center-left">$</span>
-                            <input id="transportation" class="uk-input" type="number" placeholder="Transportation" maxlength="6" th:field="*{monthlyExpenses.transportation}"/>
+                            <input id="transportation" class="spend uk-input" type="number" placeholder="Transportation" maxlength="6" th:field="*{monthlyExpenses.transportation}"/>
                         </div>
                     </div>
                     <div class="uk-margin" uk-grid="">
                         <label class="uk-leader uk-width-1-4@s pl-0 mt-xxs" for="health">Health:</label>
                         <div class="uk-inline w40 uk-width-3-4@s pl-xs">
                             <span class="uk-position-center-left">$</span>
-                            <input id="health" class="uk-input" type="number" placeholder="Health" maxlength="6" th:field="*{monthlyExpenses.health}"/>
+                            <input id="health" class="spend uk-input" type="number" placeholder="Health" maxlength="6" th:field="*{monthlyExpenses.health}"/>
                         </div>
                     </div>
                     <div class="uk-margin" uk-grid="">
                         <label class="uk-leader uk-width-1-4@s pl-0 mt-xxs" for="student-loans">Student Loans:</label>
                         <div class="uk-inline w40 uk-width-3-4@s pl-xs">
                             <span class="uk-position-center-left">$</span>
-                            <input id="student-loans" class="uk-input" type="number" placeholder="Student Loans" maxlength="6" th:field="*{monthlyExpenses.studentLoans}"/>
+                            <input id="student-loans" class="spend uk-input" type="number" placeholder="Student Loans" maxlength="6" th:field="*{monthlyExpenses.studentLoans}"/>
                         </div>
                     </div>
                     <div class="uk-margin" uk-grid="">
                         <label class="uk-leader uk-width-1-4@s pl-0 mt-xxs" for="personal">Personal:</label>
                         <div class="uk-inline w40 uk-width-3-4@s pl-xs">
                             <span class="uk-position-center-left">$</span>
-                            <input id="personal" class="uk-input" type="number" placeholder="Personal" maxlength="6" th:field="*{monthlyExpenses.personal}"/>
+                            <input id="personal" class="spend uk-input" type="number" placeholder="Personal" maxlength="6" th:field="*{monthlyExpenses.personal}"/>
                         </div>
                     </div>
                     <div class="uk-margin" uk-grid="">
                         <label class="uk-leader uk-width-1-4@s pl-0 mt-xxs" for="car-insurance">Car Insurance:</label>
                         <div class="uk-inline w40 uk-width-3-4@s pl-xs">
                             <span class="uk-position-center-left">$</span>
-                            <input id="car-insurance" class="uk-input" type="number" placeholder="Car Insurance" maxlength="6" th:field="*{monthlyExpenses.carInsurance}"/>
+                            <input id="car-insurance" class="spend uk-input" type="number" placeholder="Car Insurance" maxlength="6" th:field="*{monthlyExpenses.carInsurance}"/>
                         </div>
                     </div>
                     <div class="uk-margin" uk-grid="">
                         <label class="uk-leader uk-width-1-4@s pl-0 mt-xxs" for="house-insurance">House Insurance:</label>
                         <div class="uk-inline w40 uk-width-3-4@s pl-xs">
                             <span class="uk-position-center-left">$</span>
-                            <input id="house-insurance" class="uk-input" type="number" placeholder="House Insurance" maxlength="6" th:field="*{monthlyExpenses.houseInsurance}"/>
+                            <input id="house-insurance" class="spend uk-input" type="number" placeholder="House Insurance" maxlength="6" th:field="*{monthlyExpenses.houseInsurance}"/>
                         </div>
                     </div>
                     <div class="uk-margin" uk-grid="">
                         <label class="uk-leader uk-width-1-4@s pl-0 mt-xxs" for="other-expenses">Other:</label>
                         <div class="uk-inline w40 uk-width-3-4@s pl-xs">
                             <span class="uk-position-center-left">$</span>
-                            <input id="other-expenses" class="uk-input" type="number" placeholder="Other" maxlength="6" th:field="*{monthlyExpenses.other}"/>
+                            <input id="other-expenses" class="spend uk-input" type="number" placeholder="Other" maxlength="6" th:field="*{monthlyExpenses.other}"/>
                         </div>
                     </div>
                     <div class="uk-text-center uk-margin">
-                        <button class="uk-button uk-button-primary" type="submit">Primary</button>
+                        <button class="uk-button uk-button-primary" type="submit">Create</button>
                     </div>
                 </div>
             </li>
@@ -148,5 +149,6 @@
 
 <footer th:replace="partials :: footer"></footer>
 <span th:replace="partials :: scripts"></span>
+<script src="/js/budget-form.js"></script>
 </body>
 </html>

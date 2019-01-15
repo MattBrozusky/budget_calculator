@@ -8,4 +8,8 @@
     background-color: var(--main-background-color) !important;
 }
 
-
+.counter {
+    position: absolute;
+    top: 25%;
+    left: 8%;
+}

@@ -21,6 +21,5 @@ $(document).ready(function() {
         })
     };
 
-    totalCounter(window, 'load');
     totalCounter(document, 'keyup');
 });

@@ -5,22 +5,32 @@
 
 <nav th:replace="partials :: navbar"></nav>
 
+<div class="uk-container uk-text-center w25">
+    <h3>Log In</h3>
 
-<h1>Log In</h1>
-<div th:if="${param.error}">
-    Invalid Username and Password.
-</div>
-<div th:if="${param.logout}">
-    You have been logged out.
-</div>
+    <form class="uk-form-stacked" th:action="@{/login}" method="post">
+        <div class="uk-margin">
+            <label class="uk-form-label uk-text-left" for="username">Username</label>
+            <input class="uk-input" id="username" name="username" type="text" placeholder="Username"/>
+        </div>
+        <div class="uk-margin">
+            <label class="uk-form-label uk-text-left" for="password">Password</label>
+            <input class="uk-input" id="password" name="password" type="password" placeholder="Password"/>
+        </div>
+        <div class="uk-margin">
+            <button class="uk-button uk-button-primary" type="submit">Login</button>
+        </div>
+    </form>
 
-<form th:action="@{/login}" method="post">
-    <label for="username">Username</label>
-    <input id="username" name="username" type="text" />
-    <label for="password">Password</label>
-    <input id="password" name="password" type="password" />
-    <input type="submit" value="Log In" />
-</form>
+    <section>
+        <div th:if="${param.logout}">
+            You have been logged out.
+        </div>
+        <div th:if="${param.error}">
+            Invalid Username and Password.
+        </div>
+    </section>
+</div>
 
 <footer th:replace="partials :: footer"></footer>
 <span th:replace="partials :: scripts"></span>

@@ -5,21 +5,34 @@
 
 <nav th:replace="partials :: navbar"></nav>
 
-<h1>Create an Account</h1>
-<form th:action="@{/sign-up}" method="POST" th:object="${user}">
-    <label for="username">Username</label>
-    <input id="username" th:field="*{username}" />
+<div class="uk-container uk-text-center w25">
+    <h3>Create an Account</h3>
+    <form class="uk-form-stacked" th:action="@{/sign-up}" method="POST" th:object="${user}">
+        <div class="uk-margin">
+            <label class="uk-form-label uk-text-left" for="username">Username</label>
+            <input th:if="${#fields.hasErrors('username')}" class="uk-input uk-form-danger" id="username" th:field="*{username}"/>
+            <input th:if="!${#fields.hasErrors('username')}" class="uk-input" id="username" th:field="*{username}" placeholder="Username"/>
+            <p th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></p>
+        </div>
+        <div class="uk-margin">
+            <label class="uk-form-label uk-text-left" for="email">Email</label>
+            <input th:if="${#fields.hasErrors('email')}" class="uk-input uk-form-danger" id="email" th:field="*{email}"/>
+            <input th:if="!${#fields.hasErrors('email')}" class="uk-input" id="email" th:field="*{email}" placeholder="email@example.com"/>
+            <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
+        </div>
+        <div class="uk-margin">
+            <label class="uk-form-label uk-text-left" for="password">Password</label>
+            <input th:if="${#fields.hasErrors('password')}" class="uk-input uk-form-danger" id="password" type="password" th:field="*{password}"/>
+            <input th:if="!${#fields.hasErrors('password')}" class="uk-input" id="password" type="password" th:field="*{password}" placeholder="Password"/>
+            <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></p>
+        </div>
+        <div class="uk-margin">
+            <button class="uk-button uk-button-primary" type="submit">Register!</button>
+        </div>
+    </form>
 
-    <label for="email">Email</label>
-    <input id="email" th:field="*{email}" />
 
-    <label for="password">Password</label>
-    <input id="password" type="password" th:field="*{password}" />
-
-    <input value="Sign me up!" type="submit" />
-</form>
-
-
+</div>
 
 <footer th:replace="partials :: footer"></footer>
 <span th:replace="partials :: scripts"></span>
